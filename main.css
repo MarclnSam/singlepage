@@ -3,35 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    font-size: 20px;
+
+}
 body{
-    min-height: 100vh;
     background-color: #0c0b08;
     font-family: 'Times New Roman', Times, serif;
 }
+/* Nawigacja*/
+
 nav{
-    background-color: #0c0b08;
-    padding: 2rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-   
-    
+    background-color: #0c0b08;  
+    border-bottom: antiquewhite solid 2px;
 }
 nav ul{
-    width: 100%;
+    
     list-style: none;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 nav li{
-    height: 4rem;
+    
     font-family: "Platypi", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    
 
 }
 nav a{ 
-    height: 100%;
+   
     padding-right:  2rem;
     padding-left: 2rem;
     text-decoration: none;
@@ -58,25 +58,26 @@ nav a:hover{
 nav li:first-child a {
     text-decoration: none; 
 }
+/* Nawigacja-Menu hamburger */
+
 
 .menu{
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 15rem;
+    height: 100%;
     z-index: 100;
     backdrop-filter: blur(1rem);
     background-color: #0c0b08;
     box-shadow: -2px 0 5px rgba(-10,0,0,0.2);
     display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
     
 }
 .menu li{
-   width: 100%;margin-left: auto;
+   width: 100%;
 }
 .menu a{
     width:100%;
@@ -86,6 +87,9 @@ nav li:first-child a {
     display: none;
  
 }
+.phone_min{
+    display: none;
+}
 @media(max-width:800px){
     .phone{
         display: none;
@@ -93,84 +97,70 @@ nav li:first-child a {
     .menu-button{
         display: block;
     }
-    .Projects_container{
-        margin-top: 3rem;
+    
+    .skills_div_container{ 
+        display:flex;
+        flex-direction: column;
     }
+    .images_project {
+        flex-direction: column; 
+        align-items: center; 
+    }
+   
+    
+    
+    /**/
+
 }
 @media(max-width:400px){
     .menu{
         width: 100%;
     }
-    .Skills_container{
-        max-width:  250px;;
-    }
-    .Projects_container{
-        margin-top: 3rem;
-    }
-}
-
-/* SECTION */
-
-section{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    justify-content: center;
-    box-sizing: border-box;
-    color: whitesmoke;
-
-}
-.about_container{
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    gap:3rem;
     
-
+    
+    
 }
-.horizontal_line{
-    margin-top: 1rem;
-    margin-bottom: 0.4rem;
-}
-
-.text_container{
-   
-    text-align: center;
-    max-width: 600px;
+/*Section*/
+section{
+    font-size: 2rem;
+    color: white;
+    width: 50%;
     margin: auto;
-    margin-left: 0;
+    /* Ustawianie kontera po środku i zabezpiecznie ,żeby nie wchodził na nawigacje*/
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; 
+    max-height: calc(100% - 5rem); 
+    overflow: auto; 
 }
-.name{
-    color: wheat;
-    margin-bottom: 0.8rem;
-    font-size: 2em;
+/*about*/
+/*Ustawianie odległości kontenerów w section aby ładnie wyglądało*/
+.about_container{display:block;
+overflow: visible;
 }
-.text_p1{
-    font-size: 1.3em;
-}
-.text_p2{
-    text-align: left;
+
+.text_container p{
+    text-align: center;
+    margin-bottom: 1rem;
+
 }
 .text_change_container{
-    display: inline-flex;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 .text_change{
-    color: #9c8943  ;
+    color: aquamarine;
 }
+/*skills*/
 .Skills_container{
     display: none;
-}
-.Projects_container{
-    display: none;
-}
-.images_project img{
-    margin:2rem;
-    border-radius: 50%;
-    
-}
+    overflow: visible;
+    width: 75%;
+ }
 .skills_div_container{
     display: flex;
     text-align: center;
@@ -181,18 +171,48 @@ section{
     border-radius: 0.4rem;
     border: 2px solid white;
     padding: 1.5rem;
+    word-wrap: break-word;
 }
 .Skills_container .text_p2{
     
     text-align: center;
 }
-.images_project img{
+/*projects*/
+
+
+ .images_project img{
+    margin:2rem;
+    border-radius: 50%;
     object-fit: cover;
-    animation: float 4s ease-out infinite;
-    margin-bottom: 3.5rem;
+    animation: float 8s ease-out infinite;
+    text-align: center;
+    
 }
+.Projects_container {
+    display: none;
+    flex-direction: column;
+    align-items: center; 
+    overflow: visible;
+    width: 75%;
+}
+
+.images_project {
+    display: flex;
+    justify-content: center; 
+    
+   
+}
+.images_project img{
+    width:100px;
+    height:100px;
+}
+
+
 @keyframes float{
-    50%{
-        transform: translateY(4rem);
+    0% {
+        transform: rotate(0deg); 
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

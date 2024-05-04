@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Nawigacja górna strony-->
+    <nav>
+        <!--menu hamburger -->
+        <ul class="menu">
+            <li onclick=CloseMenu()><a href="#">x</a></li>
+            <li><a href="#About" onclick="ShowSection('About')">About me</a></li>
+            <li><a href="#Skills" onclick="ShowSection('Skills')">Skills</a></li>
+            <li><a href="#Projects" onclick="ShowSection('Projects')">Projects</a></li>
+       
+        </ul>
+        <!-- menu zwykłe-->
+        <ul>
+            <li><a href="#">ICE</a></li>
+            <li class="phone"><a href="#About" onclick="ShowSection('About')">About</a></li>
+            <li class="phone"><a href="#Skills" onclick="ShowSection('Skills')">Skills</a></li>
+            <li class="phone"><a href="#Projects" onclick="ShowSection('Projects')">Projects</a></li>
+            <li class="menu-button" onclick=OpenMenu()><a href="#"><img src="view_cozy_FILL0_wght400_GRAD0_opsz24.png" alt="logo menu"></a></li>
+      
+        </ul>
+    </nav>
+    <!-- Sekcja pierwsza about-->
+    <section id="About" class="about_container">
+        <div class="text_container"> 
+            <p>Ice with mint</p>
+            <hr class="horizontal_line">
+
+            <!--W tym divie jest typing -->
+            <div class="text_change_container">
+                <h2 class="name">The ice can turn into
+                <br>
+                <span class="text_change">  </span>
+                </h2>
+            </div>
+            <!--Po prostu text -->
+            <p class="text_p2"> 
+                Ice is the solid form of water, formed when liquid water freezes at or below its freezing point. It is characterized by its crystalline structure and various physical properties distinct from its liquid state. Ice plays a crucial role in Earth's climate system, reflecting sunlight and regulating global temperatures.
+            </p>         
+        </div>
+    </section>
+    <!-- Sekcja druga skills-->
+    <section id="Skills" class="Skills_container">
+        <div class="text_container">
+            
+            <p class="text_p1">Amazing skills of ice</p>
+            <hr class="horizontal_line">
+            <div class="skills_div_container">
+                <div class="skills_div">
+                    Cooling
+                </div>
+                <div class="skills_div">
+                    Shaping
+                </div>
+                <div class="skills_div">
+                    Slipperiness
+                </div>
+            </div>
+           
+            <p class="text_p2"> 
+                
+                Ice, though it may seem simple, possesses many extraordinary 'skills'
+            </p>
+            
+        </div>
+
+    </section>
+    <!-- Sekcja druga projects-->
+    <section id="Projects" class="Projects_container">
+        <div class="text_container">
+            
+            <p class="text_p1">Ice in diffrent projects</p>
+            <hr class="horizontal_line">
+            <div class="images_project">
+                
+                <img src="image1.jpg" alt="Image 1">
+                <img src="image2.jpg" alt="Image 2">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+           
+            <div class="text_p2"> 
+                <p>Oh, mighty ice, your power is grand,</p>
+                <p>In whispers cold, you weave secrets untold,</p>
+                <p>In rain and heat, your versatility astounds.</p>
+
+                <p>In a glass, in a cocktail's gleam,</p>
+                <p>Ancient elixir, in dreams, you gleam,</p>
+                <p>In the fridge, concealed, keeper of supplies.</p>
+            </div>
+            
+        </div>
+
+    </section>
+<!-- --> 
+<!--Wypisywanie różnych form lodu typing -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+    var typed = new Typed(".text_change",{
+    strings :["water","vapor","slush","frost","glaze"],
+    typeSpeed: 150,
+    backSpeed: 150,
+    loop: true
+    })
+</script>
+
+<!--Przechodzenie między sekcjami--> 
+<script>
+        
+    document.addEventListener("ContentEvent", function() {
+    ShowSection('About'); 
+});
+</script>   
+<script>
+    document.addEventListener("ContentLoaded", function() {
+        ShowSection('About'); 
+    });
+
+    function ShowSection(sectionId) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var sectionContent = xhr.responseText;
+                    var sectionContainer = document.getElementById(sectionId);
+                    sectionContainer.innerHTML = sectionContent;
+                } else {
+                    console.error('Wystąpił problem podczas ładowania');
+                }
+            }
+        };
+        xhr.open('GET', sectionId + '.html', true); 
+        xhr.send();
+    }
+</script>
+
+<script>
+     function ShowSection(sectionId) {
+    var sections = document.querySelectorAll('section');
+    sections.forEach(function(section) {
+        if (section.id === sectionId) {
+            section.style.display = "block";
+        } else {
+            section.style.display = "none";
+        }
+    });
+}
+</script>
+<!-- Otwieranie i zamykanie hamburgera -->
+<script>
+    function OpenMenu(){
+        const menu = document.querySelector('.menu')
+        menu.style.display='flex';
+
+    }
+    function CloseMenu(){
+        const menu = document.querySelector('.menu')
+        menu.style.display='none';
+
+    }
+</script>
+</body>
+
+</html>
